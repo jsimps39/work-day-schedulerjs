@@ -1,5 +1,6 @@
 $(function () {
   var currentHour = dayjs().hour();
+  $('#currentDay').text(dayjs().format('dddd, MMMM D, YYYY'))
   //console.log(currentHour);
   $('.time-block').on('click', '.saveButton', function () {
     var input = $(this).prev().val();
@@ -16,7 +17,7 @@ $(function () {
       $(this).addClass('past');
     } else if (hour === currentHour) {
       $(this).addClass('present')
-    } else {
+    } else if(hour > currentHour) {
       $(this).addClass('future');
     }
 
@@ -25,5 +26,5 @@ $(function () {
     $(this).find('.description').val(text);
   });
 
-  $('#currentDay').text(dayjs().format('dddd, MMMM D YYYY'))
+  
 });
